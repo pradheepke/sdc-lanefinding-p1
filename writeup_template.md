@@ -49,9 +49,9 @@ One of the things I enjoyed learning about is taking snapshot images from a vide
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![Before the robustness handling][screenshots/before]
-![After][screenshots/after]
-![Stats showing how skewed the slope numbers were for one of the images][screenshots/stats]
+![Before the robustness handling]["before.png"]
+![After]["after.png"]
+![Stats showing how skewed the slope numbers were for one of the images]["stats.png"]
 
 
 ###2. Identify potential shortcomings with your current pipeline
