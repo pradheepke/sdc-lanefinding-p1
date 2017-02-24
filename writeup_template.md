@@ -47,21 +47,26 @@ I made the pipeline more robust by doing the following:
 
 One of the things I enjoyed learning about is taking snapshot images from a video and running the pipeline through some selected images. This helped iterate faster on the robustness tweakings. I plotted the image after every step which helped me identify some of the issues.
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
+One example snapshot from the second movie, which showed a problem:
 ![Before the robustness handling](before.png)
 
-![After](after.zpng)
+These stats show how skewed the slope numbers were. Things improve if I remove outliers (keep only lines corresponding to slopes with 25th-75th quantile):
+![Stats](stats.png)
 
-![Stats showing how skewed the slope numbers were for one of the images](stats.png)
+After I did the above pruning of outliers, the results look better:
+![After](after.png)
+
+Similar results with couple of snapshots from the challenge video.
 
 
 ###2. Identify potential shortcomings with your current pipeline
-
 * This representation will break when we have perfectly vertical lines. May be I can use polar coordinates representation for line.
-* Optional challenge is not very well solved still. 
+* Optional challenge is not very well solved still. Many images in that video are still not handled well.
+* A little tedious to identify problematic images within a video.
 
 ###3. Suggest possible improvements to your pipeline
 
-* Polar co-ordinates rep for line.
-* Dig more into issues in the optional challenge. Perhaps keeping an absolute range for slope might be an easy way to address the issue.
+* Polar co-ordinates representation for line.
+* Dig more into issues in the optional challenge. I tried two ways of making the aggregate more robust: median, and average after pruning outliers. I can experiment with more variants to identify something even more robust. (e.g: identify lines with median slope and use only those, don't prune if there are only very few lines for each lane, including  an absolute range for slope might be an easy way to address the issue).
+* To identify problem images within video faster, we can try to add some heuristics to identify when issues happen. One heuristic for example is when the identified lane segments intersect within the region of interest. This can be easily computed and automated to identify problematic images automatically. We can even keep a % score to capture the quality of our lane finding (just one heuristic to do semi-automatic labeling).
+
