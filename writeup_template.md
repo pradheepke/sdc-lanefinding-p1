@@ -45,15 +45,19 @@ I made the pipeline more robust by doing the following:
   * use median instead of mean.
  * both the above methods made the yellow result much better and the final challenge problem also improved but there is still a lot of room for improvement there.
 
+One of the things I enjoyed learning about is taking snapshot images from a video and running the pipeline through some selected images. This helped iterate faster on the robustness tweakings. I plotted the image after every step which helped me identify some of the issues.
+
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image1]
+![Before the robustness handling][screenshots/before]
+![After][screenshots/after]
+![Stats showing how skewed the slope numbers were for one of the images][screenshots/stats]
 
 
 ###2. Identify potential shortcomings with your current pipeline
 
 * This representation will break when we have perfectly vertical lines. May be I can use polar coordinates representation for line.
-* Ooptional challenge is not very well solved still. 
+* Optional challenge is not very well solved still. 
 
 ###3. Suggest possible improvements to your pipeline
 
