@@ -36,6 +36,15 @@ In order to draw a single line on the left and right lanes, I modified the draw_
  * identify the y-limits based on region of interest vertices, and compute the x-coordinate using equation of line
  * Now we have one line for left and right covering the whole region of interest range.
 
+This worked well for the first video (white). But for the second video (yellow) it was off for many scenes and for the last optional challenge, it was almost always off.
+
+I made the pipeline more robust by doing the following:
+ * region of interest selection was hardcoded first. I used percentages on the image size instead of hardcoded absolute numbers.
+ * there were some scenes where one or two random lines on the road will change the line direction drastically. I made this part more robust by trying two things:
+  * include only those lines whose slopes are between 25th and 75th percentile of the slopes of left or right lanes. 
+  * use median instead of mean.
+ * both the above methods made the yellow result much better and the final challenge problem also improved but there is still a lot of room for improvement there.
+
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
 ![alt text][image1]
@@ -44,9 +53,9 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ###2. Identify potential shortcomings with your current pipeline
 
 * This representation will break when we have perfectly vertical lines. May be I can use polar coordinates representation for line.
-* Doesn't solve the optional challenge yet. Need to identify reason.
+* Ooptional challenge is not very well solved still. 
 
 ###3. Suggest possible improvements to your pipeline
 
 * Polar co-ordinates rep for line.
-* More robust region of interest mask filter?
+* Dig more into issues in the optional challenge. Perhaps keeping an absolute range for slope might be an easy way to address the issue.
